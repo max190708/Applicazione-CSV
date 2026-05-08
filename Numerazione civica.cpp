@@ -1,16 +1,22 @@
 #include <iostream>
+#include <string>
 using namespace std;
-struct Numerazione civica{
+struct NumerazioneCivica{
 string 	classeTopinimo;
 string descrizioneToponimo;
-int numero;
+string numero;
 string subalterno;
 int cap;
 int sezioneistat;
 double lat;
 double lon;
-double location;
+string location;
 };	
+
+struct location{
+double x;
+double y;
+};
 	
 	
 int main(){
