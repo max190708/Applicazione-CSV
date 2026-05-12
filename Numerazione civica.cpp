@@ -28,13 +28,27 @@ visualizzare i dati presenti nella struttura in memoria.
 
 void CaricaDati(NumerazioneCivica a[] , string file)
 {
-	
+	 ifstream fileInput("testo.txt"); 
+    string linea;
+
+    if (fileInput.is_open()) {
+        while (fileInput>>linea){ 
+            cout << linea << '\n';
+        }
+        fileInput.close(); 
+    } else {
+        cout << "Impossibile aprire il file";
+    }
 }
 	
 void visualizzazione(NumerazioneCivica a[] , string file)
 {
 	
-}	
+}
+void cercaVia(NumerazioneCivica a[] , string file)
+{
+	
+}		
 int main(){
 NumerazioneCivica dati[1500];
 
