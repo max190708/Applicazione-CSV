@@ -77,7 +77,7 @@ void cercaVia(NumerazioneCivica a[] , int n)
 }		
 
 int main(){
-NumerazioneCivica dati[1500];
+NumerazioneCivica dati[1000];
 int n = 0; // Contatore dei record effettivamente caricati
 
 int opzione;
