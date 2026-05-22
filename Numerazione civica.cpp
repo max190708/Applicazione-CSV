@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <algorithm>
 using namespace std;
 
 struct NumerazioneCivica{
-string 	classeTopinimo;
+string 	classeToponimo;
 string descrizioneToponimo;
 string numero;
 string subalterno;
@@ -32,7 +33,7 @@ void CaricaDati(NumerazioneCivica a[] , string file, int& n)
 		n = 0;
 		
 		// Legge i campi separati da virgola fino a 1000 record
-		while (n < 1000 && getline(fileInput, a[n].classeTopinimo, ',')){ 
+		while (n < 1000 && getline(fileInput, a[n].classeToponimo, ',')){ 
 			getline(fileInput, a[n].descrizioneToponimo, ',');
 			getline(fileInput, a[n].numero, ',');
 			getline(fileInput, a[n].subalterno, ',');
@@ -65,7 +66,7 @@ void visualizzazione(NumerazioneCivica a[] , int n)
 	}
 	
 	for (int i = 0; i < n; i++) {
-		cout << a[i].classeTopinimo << " " << a[i].descrizioneToponimo << " " << a[i].numero << " ";
+		cout << a[i].classeToponimo << " " << a[i].descrizioneToponimo << " " << a[i].numero << " ";
 		cout << a[i].subalterno << " - CAP: " << a[i].cap << " - Sez: " << a[i].sezioneistat << " ";
 		cout << "- Lat: " << a[i].lat << " Lon: " << a[i].lon << "\n";
 	}
@@ -73,7 +74,24 @@ void visualizzazione(NumerazioneCivica a[] , int n)
 
 void cercaVia(NumerazioneCivica a[] , int n)
 {
-	
+	string via;
+	cout<<"Inserisci una via che vorresti cercare: ";
+	cin>>via;
+		int via1=-1;
+	for(int i=0;i<1000;i++)
+	{
+	via1=a[i].classeToponimo.find(via);
+    if(via1!=-1)
+    break;
+	}
+		if(via1==-1)
+	{
+		cout<<"La via non e' stata trovata"<<endl;	
+	}
+	else
+	{
+		cout<<"La via e' stata trovata nella riga "<<via1<<" ."<<endl;
+	}
 }		
 
 int main(){
@@ -86,6 +104,7 @@ int opzione;
 		cout<<endl<<"MENU :"<<endl;
 		cout<<"1 --- Carica i dati"<<endl;
 		cout<<"2 --- Visualizzazione"<<endl;
+		cout<<"3 --- Cercare Via"<<endl;
 		cout<<"0 --- Esci"<<endl;
 		cout<<"Scegli l'opzione :"<<endl;
 		cin>>opzione;
@@ -98,6 +117,10 @@ int opzione;
 		case 2:
 			visualizzazione(dati, n);
 		break;	
+		
+		case 3:
+			cercaVia(dati, n);
+		break;
 	
 		case 0:
 		cout<<"Uscita dal programma.";
